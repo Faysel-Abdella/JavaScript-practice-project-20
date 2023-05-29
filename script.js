@@ -34,7 +34,7 @@ function checkNumber(msg) {
 
   // Check if valid number
   if (Number.NaN(num)) {
-    msgEl.innerHTML = "<div>That is not a valid number</div>";
+    msgEl.innerHTML += "<div>That is not a valid number</div>";
     return;
   }
 
@@ -66,4 +66,12 @@ function getRandomNumber() {
 // Take speak result
 recognition.addEventListener("result", onSpeak);
 
-// En
+// Make the user star guessing over and over whenever he ends
+recognition.addEventListener("end", () => recognition.start());
+
+// play again btn
+document.body.addEventListener("click", (e) => {
+  if (e.target.id == "play-again") {
+    window.location.reload();
+  }
+});
